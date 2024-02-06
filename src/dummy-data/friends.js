@@ -10,7 +10,7 @@ export default [
     hobbies: [
       'hiking',
       'netflix',
-      'death metal',
+      'classical music',
       'coding',
     ],
     married: true,

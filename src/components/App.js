@@ -33,15 +33,21 @@ const changeStatus = (id) => {
 }
   // STRETCH - Make a helper function that returns
   // a filtered array of friends data (filtering by search term)
-
+const getFilteredFriends = () => {
+  const termNormalized = searchTerm.trim().toLowerCase();
+  if (!termNormalized) return friends;
+  return friends.filter(fr => {
+    return fr.name.toLowerCase().includes(termNormalized);
+  })
+}
   return (
     <div className='app-friends container'>
       {/* 👉 6- Render the Search component */}
       {/* STRETCH - Changes to the input should update the search term */}
-      <Search />
+      <Search setSearchTerm={setSearchTerm} />
       {/* 👉 7- Render the FriendsList component */}
       {/* What prop/props does FriendsList need? */}
-      <FriendsList friends={friends} changeStatus={changeStatus} />
+      <FriendsList friends={getFilteredFriends()} changeStatus={changeStatus} />
     </div>
   )
 }
